@@ -64,10 +64,10 @@ class Product extends Model
     $this->attributes['title'] = strip_tags($value);
   }
 
-  /*public function setPriceAttribute($value)
+  public function setPriceAttribute($value)
   {
     $this->attributes['price'] = strip_tags($value);
-  }*/
+  }
 
   public function setArticleAttribute($value)
   {
