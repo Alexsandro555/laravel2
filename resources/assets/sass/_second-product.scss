@@ -1,0 +1,120 @@
+.second-product-wrapper {
+  min-height: 563px;
+  background-color: rgba(255,255,255,0.8);
+  margin: auto;
+  margin-top: -8px;
+  min-width: $main-width;
+}
+
+.second-product {
+  height: inherit;
+  background: url('#{$path}/second-products.png') top center repeat;
+  margin: auto;
+  min-width: $min-width;
+  font-family: $font-sans;
+}
+
+.second-product__content {
+  margin: 0 auto;
+  width: $min-width;
+  color: $color-white;
+  overflow: hidden;
+  height: inherit;
+}
+
+.wam-news {
+  font-size: 0.7em;
+  display: inline-block;
+  vertical-align: top;
+  width: 250px;
+  margin-top: 10px;
+  color: black;
+}
+
+.wam-news h2 {
+  color: $color-blue;
+}
+
+.wam-news h2 img {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.wam-news__date {
+  background-color: $color-blue;
+  color: rgba(255,213,17,0.9);
+  text-align: center;
+  width: 84px;
+  height: 23px;
+  line-height: 23px;
+  font-size: 0.9em;
+}
+
+.wam-news__item {
+  margin-top: 10px;
+  border-bottom: 1px dashed $color-wacker;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.wam-news__item a {
+  font-family: $font-sans;
+  font-size: 1.2em;
+  color: black;
+}
+
+.wam-news__link {
+  width:45%;
+}
+
+.wam-button {
+  display: block;
+  margin: 10px 0px;
+  background: none;
+  position: relative;
+  border: 1px solid $color-wacker;
+  @include border-radius(6px);
+  font-size:1em;
+  font-weight: bold;
+  vertical-align: center;
+  font-size: 1.2em;
+  padding: 7px;
+}
+
+
+.wam-news__button {
+  @extend .wam-button;
+  font-size:0.9em;
+  font-family: $font-sans-bold;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+}
+
+.wam-news__button a {
+  text-decoration: none;
+}
+
+.wam__carousel {
+  width: 1015px;
+  margin-left:100px;
+  display: inline-block;
+}
+
+.wam__header {
+  font-size: 0.7em;
+  display: inline-block;
+  width: 100%;
+  color: $color-blue;
+  margin-top: 10px;
+}
+
+.wam__header h2 {
+  text-transform: uppercase;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.wam__header h2 img {
+  margin-right: 10px;
+}

@@ -1,0 +1,89 @@
+.product-wrapper {
+  width: 310px;
+  height: 408px;
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 10px;
+  padding: 5px;
+  background: url('#{$path}/product-left-corner.png') right bottom no-repeat, url('#{$path}/product-right-corner.png') left top no-repeat;
+}
+
+.product {
+  width: 305px;
+  height: 403px;
+  @include box-shadow(0, 0, 10px, rgba(0,0,0,0.5));
+  background-color: $color-white;
+}
+
+.product-image {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: auto;
+  display: inline-block;
+  width: 100%;
+  height: 180px;
+  line-height: 180px;
+  text-align:center;
+  line-height: 180px;
+}
+
+.product-image img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.product-name {
+  //width: 306px;
+  //display: table-cell;
+  /*display: inline-block;
+  background: url('#{$path}/product-name.png') left center no-repeat;
+  height: 62px;
+  text-align: center;
+  font-family: $font-sans-bold;
+  vertical-align: middle;
+  padding: 5px;
+  line-height:31px;*/
+  display: table-cell;
+  background: url('#{$path}/product-name.png') center center no-repeat;
+  height: 62px;
+  font-family: "PTSans-Bold", sans-serif;
+  vertical-align: middle;
+  padding: 10px;
+  width: 305px;
+  margin: auto;
+  line-height: 21px;
+  text-align: center;
+}
+
+.product-name a {
+  font-size: 1.2em;
+  color: $color-blue;
+  text-decoration: none;
+}
+
+.product-desc {
+  text-align: center;
+  color: $color-blue;
+  font-size: 0.9em;
+  padding: 10px;
+}
+
+.product-hr {
+  color: $color-blue;
+  width: 50px;
+}
+
+.product-price {
+  font-size: 1.6em;
+  color: $color-yell;
+  font-weight: bold;
+}
+
+.product-rub {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.product-desc img {
+  //vertical-align: middle;
+}

@@ -1,0 +1,93 @@
+.product-line-1-wrapper {
+  min-height: 550px;
+  margin: auto;
+  background-color: rgba(255,255,255,1);
+  min-width: $min-width;
+}
+
+.product-line-1 {
+  width: $main-width;
+  margin: auto;
+  padding-bottom: 40px;
+}
+
+.product-line-1__header-catalog{
+  font-size: 0.7em;
+  display: inline-block;
+  width: 100%;
+  padding-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  //background: url(img/gears-dark.png) top right no-repeat;
+}
+
+.product-line-1__header-catalog img {
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.product-line-1__header-catalog h2 {
+  color: $color-blue;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.product-line-1__header-catalog h2 img {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.product-line-1__content-slider {
+  position: relative;
+  //width: 230px;
+  width: 225px;
+  height: 326px;
+  margin: 5px;
+  @include border-radius(6px);
+  @include box-shadow(0, 0, 10px, rgba(0,0,0,0.5));
+  text-align: center;
+  background-color: white;
+  background: url('#{$path}/service-slbottom-layer.png') bottom right no-repeat, url('#{$path}/service-slider-layer.png') center center repeat-x;
+}
+
+.product-line-1__content-slider .wrap {
+  position:absolute;
+  overflow:hidden;
+
+}
+
+.product-line-1__content-slider .wrap:hover {
+  height:360px;
+  width:250px;
+  @include border-radius(6px);
+  @include box-shadow(0, 0, 10px, rgba(0,0,0,0.5));
+  background-color: white;
+  z-index: 2;
+
+}
+
+.product-line-1__arrow {
+  display: inline-block;
+}
+
+.product-line-1__image {
+  border-bottom: 1px dashed gray;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: auto;
+  display: inline-block;
+  width: 100%;
+  background: url('#{$path}/prod-arrow-yel.png') top center no-repeat;
+}
+
+.product-line-1__content-slider a {
+  text-decoration: underline;
+  color: #353535;
+  font-weight: bold;
+}
+
+.product-line-1__content-slider span {
+  color: #FCDE4F;
+  font-weigh: bold;
+  font-size: 1.4em;
+}

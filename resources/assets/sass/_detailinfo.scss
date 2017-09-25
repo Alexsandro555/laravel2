@@ -1,0 +1,86 @@
+.detail-info-wrapper {
+  min-height: 450px;
+  margin: auto;
+  background: url(/css/wacker/img/content.png) top center repeat-x;
+  min-width: $min-width;
+}
+
+.detail-info {
+  width: $main-width;
+  margin: auto;
+}
+
+.detail-info-news {
+  font-size: 0.7em;
+  display: inline-block;
+  vertical-align: top;
+  width: 250px;
+  margin-top: 10px;
+  background: url(/css/wacker/img/gears-red.png) top right no-repeat;
+}
+
+.detail-info-news__date {
+  //@extend .wacker-label;
+  width: 84px;
+  height: 23px;
+  line-height: 23px;
+  font-size: 0.9em;
+}
+
+.detail-info-news__item {
+  margin-top: 10px;
+  border-bottom: 1px dashed $color-wacker;
+}
+
+.detail-info-news__item span a {
+  color: #343434;
+  font-family: $font-sans-bold;
+  font-size: 1.2em;
+}
+
+.detail-info-news__item span {
+  font-size: 0.8em;
+}
+
+
+.detail-info-buttom{
+  display: block;
+  margin: 10px 0px;
+  background: none;
+  position: relative;
+  border: 1px solid $color-wacker;
+  @include border-radius(6px);
+  //height: 30px;
+  font-size:1.2em;
+  font-family: $font-sans-bold;
+  width: 100px;
+  //padding: 5px;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  vertical-align: center;
+  line-height: 30px;
+  text-decoration: none;
+}
+
+.detail-info-news__button {
+  //@extend .wacker-button;
+  padding: 7px;
+}
+
+.detail-info__main {
+  display: inline-block;
+  width: 850px;
+  margin-left: 50px;
+}
+
+
+.detail-info__main h2 {
+  text-transform: uppercase;
+  font-family: $font-sans-bold;
+  font-size: 1.2em;
+}
+
+.detail-info__main h3 {
+  margin-left: 20px;
+}

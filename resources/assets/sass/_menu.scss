@@ -1,0 +1,49 @@
+@import 'login';
+
+.menu-nav ul {
+	//margin-left:18px;
+	//padding: 0;
+	//padding: 4px;
+	margin: 0;
+	height: inherit;
+	vertical-align: middle;
+}
+
+.menu-nav ul li {
+	width: 300px;
+	font-family: $font;
+	font-size: 0.9em;
+	display: inline;
+	//margin-right: 5px;
+	padding: 20px 0px;
+	color: white;
+	height: inherit;
+	vertical-align: middle;
+	line-height: 49px;
+}
+
+.menu-nav ul li:hover{
+	background: url('#{$path}/hr-line.png') bottom 4px center repeat-x, url('#{$path}/menu-nav-active.png') center center repeat-x;
+	//color: black;
+	height: inherit;
+	color: $color-blue;
+}
+
+.menu-nav ul li a:hover {
+	color: $color-blue;
+}
+
+.menu-nav ul li a {
+	padding: 10px;
+	color: white;
+	text-decoration: none;
+	font-family: $font-dax-bold;
+	font-size: 0.9em;
+	//padding: 0 20 0 20;
+}
+
+.login {
+  width: 155px;
+  height: 48px;
+  background: url('#{$path}/login.png') center center repeat-x;
+}

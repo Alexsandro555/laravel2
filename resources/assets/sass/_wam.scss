@@ -1,0 +1,90 @@
+.wam__wrapper {
+  height: 331px;
+  background: url('#{$path}/wam-wrapper.png') top center repeat;
+  margin: auto;
+  min-width: $min-width;
+}
+
+.wam__wrapper-from {
+  background-color: rgba(255,255,255,0.5);
+  height: inherit;
+  margin: auto;
+}
+
+.wam {
+  width: $main-width;
+  margin: auto;
+  overflow: hidden;
+}
+
+.wam__main-prod {
+  display: block;
+  width: 49%;
+  float: left;
+}
+
+.wam__brends {
+  display: block;
+  width: 50%;
+  float: right;
+}
+
+.wam__head {
+  color: $color-blue;
+  font-size: 1.4em;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: $font-sans-bold;
+}
+
+.wam__head img {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.wam__spec-prod {
+  display: inline-block;
+  width: 196px;
+  height: 210px;
+  background:  rgba(255,255,255,1);
+  margin: 0px 10px;
+}
+
+.wam__spec-prod-img {
+  height: 160px;
+  line-height: 120px;
+  vertical-align: middle;
+  text-align: center;
+  z-index: -10;
+}
+
+.wam__spec-prod-img img {
+  height: 150px;
+}
+
+.wam__spec-prod-title {
+  font-family: $font-sans-bold;
+  font-size: 1em;
+  text-align: center;
+  color: $color-blue;
+  text-transform: uppercase;
+  //display: block;
+  height: 55px;
+  background: url('#{$path}/wam-product-spec-title.png') bottom center no-repeat;
+  display: table-cell;
+  vertical-align: middle;
+  margin: auto;
+  line-height: 19px;
+  width: inherit;
+}
+
+.wam__our-brands {
+  width: 643px;
+  height: 210px;
+  background-color: rgba(255,255,266,1);
+}
+
+.wam-catalog-height {
+  height: 563px;
+}

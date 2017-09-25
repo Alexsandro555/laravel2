@@ -1,0 +1,102 @@
+.menu-left-wrapper {
+  position: absolute;
+  margin-left: 45px;
+  width: 280px;
+  z-index: 1000;
+  //margin-top: -12px;
+  overflow: visible;
+  background: url('#{$path}/menu-left-wrapper.png') repeat right top;
+}
+
+.menu-left {
+  position: relative;
+  background-color: white;
+  z-index: 10;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  margin-left:-12px;
+  margin-top: -12px;
+  overflow:visible;
+  //@include box-shadow(0, 10px, 10px, rgba(0,0,0,0.5));
+  //background: url('#{$path}/menu-left-ugl.png') no-repeat right top -10px;
+  //overflow: visible;
+  background: url('#{$path}/menu-left-layout-header.png') repeat-y right center;
+}
+
+.menu-left__header {
+  font-size: 1em;
+  font-family: $font-dax-bold;
+  padding-left: 25px;
+  font-weight: bold;
+  line-height: 3.5;
+  text-transform: uppercase;
+  color: $color-yell;
+  height: 89px;
+  background: url('#{$path}/wam-label.png') no-repeat left top, url('#{$path}/number1.png') no-repeat right 10px center;
+  vertical-align: middle;
+  line-height: 89px;
+}
+
+
+.menu-left ul {
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.menu-left ul li {
+  list-style: none;
+  padding-left: 25px;
+  font-size: 1em;
+  line-height: 1.5;
+  //text-transform: uppercase;
+  border-bottom: 1px dashed lightgrey;
+  z-index: 12;
+  position: relative;
+  width: 88%;
+  background: url('#{$path}/menu-left-arrow.png') center right 10px no-repeat, rgba(35,63,99,1);
+  margin-left: 5px;
+  padding: 10px;
+}
+
+.menu-left ul li a{
+  text-decoration: none;
+  color: white;
+  font-size: 0.9em;
+  font-family: $font-spec;
+}
+
+
+.menu-left ul li:last-child {
+  background: url('#{$path}/menu-left-arrow.png') center right 10px no-repeat, rgba(35,63,99,1);
+
+}
+
+.menu-left ul li:first-child {
+  background: url('#{$path}/menu-left-last.png') no-repeat center top, url('#{$path}/menu-left-arrow.png') center right 10px no-repeat, rgba(35,63,99,1);
+}
+
+
+.menu-left__toggle {
+  font-size: 1em;
+  font-family: $font-sans-bold;
+  text-transform: uppercase;
+  color: $color-yell;
+  height: 79px;
+  vertical-align: middle;
+  line-height: 79px;
+  text-align: center;
+  //background: url('#{$path}/img/menu-toggle-down.png') no-repeat right 70px center, url('#{$path}/img/menu-left-last.png') no-repeat center bottom;
+}
+
+.menu-left__toggle img {
+  vertical-align: middle;
+  margin-left: 5px;
+  margin-top: -5px;
+}
+
+.menu-ugl {
+  position: absolute;
+  margin-left: 282px;
+  margin-top: 0px;
+}

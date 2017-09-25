@@ -1,0 +1,160 @@
+@import 'menu-left';
+
+.content-wrapper {
+	min-height: 1000px;
+	width: 100%;
+	background: url('#{$path}/content.jpg') top center repeat;
+	z-index: 1;
+	min-width: $min-width;
+	overflow: hidden;
+	padding-bottom: 20px;
+}
+
+.content {
+	margin: auto;
+	padding-top: 70px;
+	width: $main-width;
+	font-size: 0.9em;
+	margin-bottom: 30px;
+
+	height: inherit;
+}
+
+
+.detail-button {
+	display: block;
+	margin: 10px 0px;
+	background: none;
+	position: relative;
+	border: 2px solid white;
+	@include border-radius(20px);
+	font-size:1em;
+	font-weight: bold;
+	color: $color-white;
+	margin-left: 35px;
+	vertical-align: center;
+	font-size: 0.9em;
+	padding: 7px;
+	text-decoration: none;
+	text-align: center;
+	text-transform: uppercase;
+	width: 130px;
+	margin-top: 30px;
+}
+
+
+
+.content__products {
+	float: right;
+	width: 1000px;
+	margin-top: 20px;
+	margin-right: 40px;
+}
+
+.content__product-title {
+	text-align: center;
+	font-size: 1.4em;
+	font-family: $font-sans-bold;
+	color: $color-blue;
+	text-transform: uppercase;
+}
+
+.content__product-title img {
+	vertical-align: middle;
+	margin-right:5px;
+}
+
+.content__product-header {
+	float: left;
+	width: 780px;
+	padding-left: 105px;
+	text-align: center;
+}
+
+
+.content__product-button {
+	float:right;
+	margin-right: 5px;
+}
+
+.content__product-button a{
+	background: url('#{$path}/content-product-button.png') top center no-repeat;
+	width: 108px;
+	height: 34px;
+	text-decoration: none;
+	display: inline-block;
+	@include border-radius(20px);
+	color: white;
+	font-size: 0.9em;
+	vertical-align: bottom;
+	line-height: 34px;
+	text-align: center;
+	text-transform: uppercase;
+	color: $color-yell;
+}
+
+.wamgroup {
+	float: right;
+}
+
+.wam-marg {
+	margin-right: 50px;
+	margin-top: 200px;
+}
+
+.wamgroup a {
+	display: inline-block;
+	vertical-align: top;
+	color: $color-blue;
+	width: 100px;
+	font-family: $font-roboto-bold;
+	font-size: 1.1em;
+	padding-top:10px;
+}
+
+.content__catalog {
+	margin-top: -50px;
+}
+
+.content__header img {
+	vertical-align: middle;
+	margin-right: 10px;
+}
+
+.content__header h2 {
+	color: $color-blue;
+}
+
+.content__catalog-head {
+	display: block;
+	float: left;
+	width: 45%;
+	margin-left: 350px;
+}
+
+.content__catalog-wam {
+	display: block;
+	float: right;
+	width: 29%;
+}
+
+.content__catalog-mrg {
+	margin-right: 80px;
+}
+
+.content__product-all-btn {
+	width: 100%;
+	//margin-right: 40px;
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+
+.content__all-botton {
+	float: right;
+	margin-right: 80px;
+}
+
+@import 'detail';
+
+
+

@@ -1,0 +1,52 @@
+.catalog-description-wrapper {
+  margin: auto;
+  background: url('#{$path}/sub-catalog-layout-top.png') top center no-repeat, url('#{$path}/sub-catalog-layout-bottom.png') bottom center no-repeat;
+  height: 861px;
+  min-width: $min-width;
+}
+
+.catalog-description {
+  color: $color-white;
+  margin: auto;
+  //background: rgba(15,45,82,0.9), url(/css/wacker/img/desc-triang-right.png) top right no-repeat, url(/css/wacker/img/desc-trian-left.png) bottom left no-repeat;
+  //background-color:;
+  background: url('#{$path}/hr-line.png') bottom center repeat-x, rgba(15,45,82,0.9);
+  height: inherit;
+  min-width: $main-width;
+  font-size: 1.1em;
+  overflow: hidden;
+}
+
+.catalog-description img {
+  position: absolute;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+
+}
+
+.catalog-description h2 {
+  margin-top: 0px;
+  padding-top: 10px;
+  font-family: $font-sans-bold;
+  font-size: 1.4em;
+  color: $color-yell;
+}
+
+.catalog-text {
+  //margin-left: 90px;
+  //margin-right: 90px;
+  font-size: 0.9em;
+  margin: 0 auto;
+  width: 1000px;
+  margin-top: 50px;
+}
+
+.catalog-text ul {
+  padding-left: 0px;
+}
+.catalog-text ul li {
+  list-style: none;
+  padding-left: 10px;
+  background: url('#{$path}/red-list-arrow.png') left center no-repeat;
+}

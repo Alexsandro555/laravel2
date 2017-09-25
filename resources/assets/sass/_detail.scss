@@ -1,0 +1,329 @@
+.detail {
+  margin-top: -50px;
+  margin-left: 40px;
+  color: $color-blue;
+}
+
+.detail__header {
+  width: 570px;
+  //margin-left: 319px;
+  display: inline-block;
+  font-family: $font-sans-bold;
+  font-size: 0.9em;
+  width: 100%;
+  border-bottom: 1px dashed $color-blue;
+
+}
+
+.detail-broadrcubms {
+  margin-left: 314px;
+}
+
+.detail__header h1 {
+  display: inline-block;
+  font-size:1.7em;
+  font-family: $font-sans-bold;
+  color: $color-blue;
+}
+
+.detail-picture {
+  display: block;
+  float: left;
+  width:30%;
+}
+
+.detail-data {
+  display: block;
+  float: right;
+  width: 69%;
+}
+
+.detail__title {
+  float: left;
+  width: 70%;
+}
+
+.detail__IEC {
+  display: block;
+  //vertical-align: top;
+  margin-top: 30px;
+  font-size: 0.9em;
+  margin-right: 0px;
+  color: $color-blue;
+  float: right;
+  //width: 28%;
+}
+
+.detail__images {
+  display: block;
+  float: left;
+  width: 306px;
+  height: 259px;
+  background-color: white;
+  //@include border-radius(10px);
+  //background: url('#{$path}/detail__images_leftlayer.png') right bottom no-repeat, rgba(255,255,255,1);
+  margin-top:25px;
+  background: url('#{$path}/product-left-corner.png') right bottom no-repeat, url('#{$path}/product-right-corner.png') left top no-repeat;
+
+}
+
+
+.detail-images-center {
+  width: 293px;
+  height: 245px;
+  margin-top: 5px;
+  margin-left: 5px;
+  display: inline-block;
+  vertical-align: middle;
+  //margin: auto;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  //background: url('#{$path}/detail__images_leftlayer.png') right bottom no-repeat, ;
+  background-color: rgba(255,255,255,1);
+  line-height: 245px;
+  //@include border-radius(10px);
+}
+
+.detail-images-center img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+.detail__slider {
+  display: block;
+  width: 150px;
+  float:left;
+}
+
+.detail__characteristics {
+  display: block;
+  width: 670px;
+  float: right;
+  margin-right: 30px;
+}
+
+.detail__table {
+  width: 670px;
+  //border-bottom: 1px dashed lightgrey;
+}
+
+.table__main {
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.table__kol {
+  text-transform: uppercase;
+  text-align:right;
+}
+
+.detail__table th {
+  //border-bottom: 1px dashed lightgrey
+}
+
+.detail__table tr td span {
+  font-size: 1.5em;
+  color: orange;
+}
+
+.detail__table tbody tr td {
+  font-size: 0.9em;
+}
+
+.table__sale {
+  text-align: right;
+  vertical-align: middle;
+}
+
+.table__btn {
+  width: 108px;
+  height: 36px;
+  text-decoration: none;
+  display: inline-block;
+  @include border-radius(20px);
+  color: white;
+  font-size: 0.9em;
+  vertical-align: middle;
+  line-height: 34px;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #F4BE43;
+}
+
+
+
+
+.tech-catalog {
+  display: inline-block;
+  //tech-catalog-arrow.png
+}
+
+.tech-catalog ul li {
+  list-style: none;
+  padding-left: 10px;
+  //background: url(/css/wacker/img/tech-catalog-arrow.png) left center no-repeat;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.characteristics-list ul {
+  margin: 0;
+  padding: 0;
+}
+.characteristics-list ul li {
+  list-style: none;
+  padding-left: 10px;
+  //background: url(/css/wacker/img/footer-menu.png) left center no-repeat;
+  padding-top: 5px;
+  font-size: 0.8em;
+}
+
+.sd {
+  margin-top: 0px;
+  margin-left: 310px;
+}
+
+.box-alex-slider {
+  display: inline-block;
+  background-color: white;
+  @include border-radius(2px);
+  vertical-align: middle;
+  text-align: center;
+  width: 85px;
+  height: 85px;
+  line-height: 85px;
+  background: url(/css/wacker/img/box-alex-slider.png) right bottom no-repeat, url(/css/wacker/img/box-alex-arrow.png) top center no-repeat, rgba(255,255,255,1);
+}
+
+.box-alex-slider img {
+  vertical-align: middle;
+}
+
+.detail-counter {
+  background-color: white;
+  @include border-radius(15px);
+  height: 24px;
+  line-height: 20px;
+  text-align: center;
+  border: 1px solid lightgrey;
+}
+
+.detail-counter__left {
+  display: block;
+  width: 22%;
+  height: inherit;
+  line-height: inherit;
+  border-right: 1px solid lightgrey;
+  float: left;
+}
+
+.detail-counter__center {
+  display: block;
+  width: 50%;
+  height: inherit;
+  float: left;
+  line-height: inherit;
+  vertical-align: middle;
+}
+
+.detail-counter__right {
+  display: block;
+  width: 22%;
+  height: inherit;
+  line-height: inherit;
+  float: right;
+  border-left: 1px solid lightgrey;
+}
+
+
+.detail-characteristics-info-wrapper {
+  background: url('#{$path}/wam-wrapper.png') left center repeat;
+  overflow: hidden;
+  color: $color-white;
+  margin-top: 30px;
+}
+
+.detail-characteristics-info {
+  background-color: rgba(15,45,82,0.8);
+  //rgba(15,45,82,0.9),
+  width: 100%;
+  height: 400px;
+}
+
+.detail-characteristics-info ul {
+  margin: 0;
+}
+.detail-characteristics-info ul li {
+  display: inline;
+  listy-style-type: none;
+  color: $color-white;
+  text-transform: uppercase;
+  padding-left: 20px;
+  //background: url('#{$path}/footer-menu.png') left center no-repeat;
+}
+
+.detail-characteristics-info__header {
+  display: inline-block;
+  height: 80px;
+  vertical-align: middle;
+  line-height: 80px;
+  width: 100%;
+  background: url('#{$path}/hr-line.png') top center repeat-x, url('#{$path}/cart-wrap.png') center center repeat-x;
+}
+
+.detail-characteristics-info ul li a{
+  color: $color-white;
+  text-decoration: none;
+}
+
+.detail-marg {
+  margin-right: 10px !important;
+}
+
+.detail-characteristics__btn-tech {
+  display: inline-block;
+  margin: 2px 0px;
+  background: none;
+  position: relative;
+  //border: 1px solid white;
+  //-mox-border-radius: 6px;
+  //border-radius: 6px;
+  //height: 30px;
+  padding: 5px 10px;
+  font-size: 0.9em;
+  //font-weight: bold;
+  color: white;
+  margin-left: 5px;
+  text-transform: uppercase;
+  font-family: $font-sans;
+  font-size: 0.9em;
+}
+
+.detail-characteristics__btn-tech:hover {
+  color:#FFCA00;
+}
+
+.detailActive {
+  color:#FFCA00;
+}
+
+
+.carousel-slide {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  margin: 3px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  background-color: rgba(255,255,255,1);
+}
+
+.carousel-slide img {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+}
+

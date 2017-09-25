@@ -1,0 +1,191 @@
+.service-wrapper {
+	min-height: 450px;
+	margin: auto;
+	background: url(/css/wacker/img/content.png) top center repeat-x;
+	min-width: $min-width;
+}
+
+.service {
+	width: $main-width;
+	margin: auto;
+}
+
+.service__sentence {
+	width: 70%;
+	height: 442px;
+	display: inline-block;
+	vertical-align: top;
+	background: url(/css/wacker/img/service-content.png) bottom left no-repeat;
+}
+
+.service__delivery {
+	width: 29%;
+	height: 400px;
+	display: inline-block;
+	vertical-align: top;
+	background: url(/css/wacker/img/service-delivery-layout.png) top right no-repeat;
+}
+
+.service__header-sentence {
+	margin-top: 10px;
+	width: 80%;
+	display: inline-block;
+	line-height: inherit;
+	font-size: 0.8em;
+	margin-left: 30px;
+}
+
+.service__header-sentence img {
+	vertical-align: middle;
+	margin-left: 10px;
+}
+
+.service__header-delivery {
+	margin-top: 15px;
+	width: 80%;
+	display: inline-block;
+	line-height: inherit;
+	//background: url(img/gears-dark.png) center right no-repeat;
+	font-size: 0.8em;
+}
+
+.service__header-delivery img {
+	vertical-align: middle;
+	margin-left: 10px;
+}
+
+.service__header-delivery h2 {
+	display: inline-block;
+	text-transform: uppercase;
+}
+
+.service__header-sentence h2 {
+	display: inline-block;
+	text-transform: uppercase;
+}
+
+.service__content {
+	height: 348px;
+	padding-left: 30px;
+	padding-top: 5px;
+}
+.service__content-delivery {
+	height: 300px;
+}
+
+
+.service__content-delivery ol {
+	padding-left: 0px;
+}
+
+.service__content-delivery ol li{
+	list-style: none;
+	padding-top: 10px;
+	line-heigh: 1;
+}
+
+.service__num {
+	color: white;
+	background: black;
+	display: inline-block;
+	text-align: center;
+	margin: 5px 10px;
+	line-height: 25px;
+	width: 25px;
+	height: 25px;
+	@include border-radius(60px);
+}
+
+.service__hrtop{
+	margin-top: -8px;
+	height: 8px;
+	background: url(/css/wacker/img/wacker-hr.png) top center repeat-x;	
+}
+
+.service__content-slider {
+	position: relative;
+	width: 225px;
+	height: 333px;
+	margin: 5px;
+	@include border-radius(6px);
+	@include box-shadow(0, 0, 10px, rgba(0,0,0,0.5));
+	text-align: center;
+	background: url(/css/wacker/img/service-slbottom-layer.png) bottom right no-repeat, url(/css/wacker/img/service-slider-layer.png) center center repeat-x, rgba(255,255,255,1);
+}
+
+.service__content-slider .wrap {
+	position:absolute;
+	overflow:hidden;
+
+}
+
+.service__content-slider .wrap:hover {
+	height:360px;
+	width:250px;
+	@include border-radius(6px);
+	@include box-shadow(0, 0, 10px, rgba(0,0,0,0.5));
+	background-color: white;
+	z-index: 2;
+
+}
+
+.service__arrow {
+	display: inline-block;
+}
+
+.service__image {
+	border-bottom: 1px dashed gray;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin: auto;
+	display: inline-block;
+	width: 100%;
+	height: 180px;
+	line-height: 180px;
+	background: url(/css/wacker/img/service-arrow.png) top center no-repeat;
+}
+
+.service__image img {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.service__content-slider a {
+	text-decoration: underline;
+	color: #353535;
+}
+
+.service__content-slider span {
+	color: #FCDE4F;
+	font-weigh: bold;
+	font-size: 1.4em;
+}
+
+.service__header-catalog{
+	font-size: 0.7em;
+	display: inline-block;
+	width: 500px;
+	padding-left: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	//background: url(img/gears-dark.png) top right no-repeat;
+}
+
+.service__header-catalog img {
+	vertical-align: middle;
+	margin-left: 10px;
+}
+
+.service__header-catalog h2 {
+	text-transform: uppercase;
+	display: inline-block;
+}
+
+.service__line {
+	margin-left: 8px;
+	margin-right: 8px;
+	color: #4C4C4C;
+	font-weight: bold;
+	font-size: 0.9em;
+}
+

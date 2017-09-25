@@ -1,0 +1,126 @@
+.about {
+	height: 550px;
+	background: url('#{$path}/hr-line.png') bottom center repeat-x, url('#{$path}/hr-line.png') top center repeat-x, url('#{$path}/about-wrapper.png') top center no-repeat;
+	margin: auto;
+	min-width: $min-width;
+}
+
+.about-wrapper {
+	//background-color: rgba(15,45,82,0.9);
+	margin: auto;
+	margin-top: -8px;
+	min-width: $main-width;
+	height: inherit;
+}
+
+.about__content {
+	margin: 0 auto;
+	width: $min-width;
+	color: $color-white;
+}
+
+.about__info {
+	display: table-cell;
+	width: 48%;
+	padding-top: 30px;
+	padding-left: 30px;
+	padding-right: 20px;
+}
+
+.about__news {
+	display: table-cell;
+	width: 48%;
+	padding-top: 30px;
+}
+
+.about__header {
+	color: $color-light-yell;
+	font-size:1.5em;
+	text-transform: uppercase;
+	font-family: $font-bold;
+}
+
+.about__header img {
+	vertical-align: middle;
+	margin-right: 10px;
+}
+
+
+.about__news-left {
+	display: table-cell;
+	width:49%;
+}
+
+.about__news-right {
+	display: table-cell;
+	width: 50%;
+}
+
+.about__marg {
+	padding-top: 20px;
+	padding-right: 20px;
+	font-size: 0.9em;
+}
+
+.about__marg h3 a{
+	color: $color-light-yell;
+	font-size: 1.2em;
+	text-decoration: none;
+}
+
+.about__news-date {
+	width: 84px;
+	height: 23px;
+	line-height: 23px;
+	font-size: 0.9em;
+	background-color: $color-light-yell;
+	font-family: $font-sans-bold;
+	color: $color-blue;
+	text-align: center;
+}
+
+.about__product {
+	background: url('#{$path}/about-sale.png') top center no-repeat;
+	margin-top: 20px;
+	width: 643px;
+	height: 177px;
+}
+
+.about__product-detail {
+	float: right;
+	background: url('#{$path}/about-product-detail.png') top center no-repeat;
+	width: 316px;
+	height: 177px;
+	padding-left: 80px;
+}
+
+.about__product-detail span {
+	color:$color-yell;
+	font-size: 1.3em;
+	margin-top: 20px;
+	//margin-left: 20px;
+}
+
+.about__product-hr {
+	width: 60px;
+}
+
+.about__product-detail-p {
+	//color: $color-yell;
+	font-size: 1em !important;
+}
+
+
+.about__product-price {
+	font-size: 1.5em !important;
+}
+
+.about__image {
+	margin-top: -320px;
+}
+
+
+.about-btn-right {
+	float: right;
+	margin-right: 30px;
+}

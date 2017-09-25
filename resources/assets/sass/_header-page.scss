@@ -1,0 +1,124 @@
+.header-page {
+  height: 669px;
+  z-index: 4;
+  background: url('#{$path}/header-page.png') top center no-repeat;
+  min-width: $min-width;
+  position:relative;
+}
+.header-page__layout {
+  height: 49px;
+  background: url('#{$path}/header.png') top center repeat;
+  z-index: 5;
+  width: 100%;
+  min-width: $main-width;
+}
+.header-page__main {
+  margin: auto;
+  width: $main-width;
+  position: relative;
+}
+
+.header-center {
+  display: inline-block;
+  vertical-align: middle;
+  vertical-align: top;
+  height: 49px;
+}
+
+.header-right {
+  float: right;
+}
+
+.login ul {
+  margin: 0;
+  padding: 10;
+}
+
+.login ul li {
+  padding-top:2px;
+  color: white;
+}
+
+.login ul li a {
+  color: #FBBD2C;
+  font-size: 0.9em;
+}
+
+.header-page__contact-wrapper {
+  background: url('#{$path}/menu-slider.png') top center repeat-x;
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  bottom: 0;
+}
+
+.header-page__contact {
+  margin: 0 auto;
+  width: 280px;
+  color: #032F5F;
+  font-size: 0.9em;
+}
+
+.header-page__email {
+  color: #FBBD2C;
+}
+
+
+.header-page__contact-wrapper {
+  background: url('#{$path}/menu-slider.png') top center repeat-x;
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  bottom: 0;
+}
+
+.header-page__contact {
+  margin: 0 auto;
+  width: 280px;
+  color: #032F5F;
+}
+
+.header-page__email {
+  color: #FBBD2C;
+}
+
+.header__blue-mark {
+  background-color: #032F5F;
+  padding: 3px;
+  margin-top: -10px;
+  color: #FBBD2C;
+  position: absolute;
+}
+
+.header__tel {
+  color: #032F5F;
+  font-size: 1.7em;
+  font-family: $font-roboto-bold;
+}
+
+.header__back-call {
+  text-decoration: none;
+  border-bottom: 1px dashed #032F5F;
+  text-transform: uppercase;
+  color: #032F5F;
+  font-size: 1em;
+  font-family: $font-roboto-bold;
+}
+
+
+.main-slogan {
+  position: absolute;
+  width: 1000px;
+  height: 250px;
+  margin-top: 30px;
+  margin-left: 180px;
+  color: white;
+  font-family: $font-dax-lf;
+  font-size: 2.5em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.sub-slogan {
+  font-size: 0.6em;
+}
