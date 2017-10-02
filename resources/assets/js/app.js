@@ -16,6 +16,7 @@ import Autocomplete from 'v-autocomplete'
 import 'v-autocomplete/dist/v-autocomplete.css'
 import ToggleButton from 'vue-js-toggle-button'
 import VueCarousel from 'vue-carousel';
+import MaskedInput from 'vue-masked-input';
 
 //import wysiwyg from "vue-wysiwyg";
 
@@ -61,12 +62,15 @@ Vue.component('attributes-product', require('./components/attributesProduct/Inde
 Vue.component('lselect', require('./components/lSelect/Index.vue'));
 Vue.component('Tselect', require('./components/TSelect/Index.vue'));
 Vue.component('leader-slider', require('./components/leader-slider/Index.vue'));
-Vue.component('leader-tabs', require('./components/leader-tabs/Index.vue'));
 Vue.component('leader-detail-image', require('./components/leader-detail-image/Index.vue'));
 Vue.component('alex-carousel', require('./components/alex-carousel/index'));
+Vue.component('leader-cart-widget', require('./components/leader-cart-widget/index'));
 Vue.component('type-slider', require('./components/type-slider/index'));
+Vue.component('leader-cart', require('./components/leader-cart/index'));
+Vue.component('leader-tabs', require('./components/leader-tabs/index'));
 import AlexVueCarousel from './components/alex-carousel/index.js';
 Vue.use(AlexVueCarousel);
+Vue.prototype.$eventBus = new Vue();
 
 /*axios.interceptors.request.use(function (config) {
     config.headers['X-CSRF-TOKEN'] = Laravel.csrfToken;
@@ -83,9 +87,27 @@ new Vue({
         attrProd: [],
         CharacteristicActive: true,
         DescriptionActive: false,
-        DetailActive: false
+        DetailActive: false,
+        cart: {
+            count:0,
+            total:0
+        }
+    },
+    components: {
+      MaskedInput
     },
     methods: {
+        addCart: function (id) {
+            let that = this;
+            this.axios.get('/add-cart/'+id, {}).then(function (response) {
+                let cartVal = response.data;
+                that.cart.count =  cartVal.count;
+                that.cart.total = cartVal.total;
+            }).catch(function (error)
+            {
+                console.log(error);
+            });
+        },
         selectProductLine: function(id) {
             let that = this;
             this.attrProd = [];

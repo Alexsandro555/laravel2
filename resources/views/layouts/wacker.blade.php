@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('normalize.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @yield('view.style')
     <title>Wam</title>
 </head>
 <body>
@@ -57,15 +58,7 @@
     </header>
     <div class="finder-wrapper">
         <div class="finder">
-            <div class="finder__cart">
-                <div class="finder__cart-image">
-                    <img src="{{asset('storage/cart.png')}}"/>
-                </div>
-                <div class="finder__cart-info">
-                    <a href="">Корзина</a><br>
-                    У вас <span>2</span> товара на <span>100 000</span> руб.
-                </div>
-            </div>
+            <leader-cart-widget :cart-item="cart"></leader-cart-widget>
             <div class="finder__search">
                 <input type="text" class="finder__input" placeholder=" Поиск по сайту" />
                 <button class="search-button">

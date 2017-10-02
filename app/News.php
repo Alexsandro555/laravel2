@@ -21,4 +21,8 @@ class News extends Model
   public function files() {
     return $this->morphMany('App\File', 'fileable');
   }
+
+  public function setTitleAttribute($value) {
+    $this->attributes['title'] = strip_tags($value);
+  }
 }

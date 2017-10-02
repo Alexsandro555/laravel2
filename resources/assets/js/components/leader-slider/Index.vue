@@ -13,8 +13,8 @@
                             Сделан на заказ из стандартных компонентов
                             <hr class="product-hr">
                             <div>
-                                <span class="product-price">{{item.price}}</span> <span class="product-rub">руб.</span>
-                                <img src="/storage/product-cart.png"/>
+                                <span class="product-price">{{item.price}}</span><span class="product-rub">руб.</span>
+                                <a href="#" @click.prevent="addCart(item.id)"><img src="/storage/product-cart.png"/></a>
                             </div>
                         </div>
                     </div>
@@ -58,6 +58,11 @@
             {
                 console.log(error);
             });
+        },
+        methods: {
+            addCart(id) {
+                this.$parent.addCart(id);
+            }
         }
     }
 </script>

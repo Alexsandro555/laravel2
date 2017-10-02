@@ -38,7 +38,7 @@
                                 @endif
                             </div>
                             <div class="product-name"><a href="{{route('wacker-detail',['slug'=>$firstProductLine->url_key])}}">
-                                    {!! str_limit(strip_tags($firstProductLine->title), $limit = 50, $end="...") !!}
+                                    {!! str_limit($firstProductLine->title, $limit = 50, $end="...") !!}
                                 </a>
                             </div>
                             <div class="product-desc">
@@ -46,7 +46,7 @@
                                 <hr class="product-hr">
                                 <div>
                                     <span class="product-price">{{$firstProductLine->price}}</span> <span class="product-rub">руб.</span>
-                                    <img src="{{asset('storage/product-cart.png')}}"/>
+                                    <img @click.prevent="addCart({{$firstProductLine->id}})" src="{{asset('storage/product-cart.png')}}"/>
                                 </div>
                             </div>
                         </div>
@@ -81,14 +81,14 @@
                                         </div>
                                         <div class="sub-catalog__product-title">
                                             <a href="{{route('wacker-detail',['slug'=>$secondProductLine->url_key])}}">
-                                                {!! str_limit(strip_tags($secondProductLine->title), $limit = 50, $end="...") !!}</a>
+                                                {!! str_limit($secondProductLine->title, $limit = 50, $end="...") !!}</a>
                                         </div>
                                         <div class="sub-catalog-product-desc">
                                             Сделан на заказ из стандартных компонентов
                                             <hr class="product-hr">
                                             <span class="sub-catalog-product-price">{{$secondProductLine->price}}</span>
                                             <span class="sub-catalog-product-rub">руб.</span>
-                                            <img src="{{asset('storage/product-cart.png')}}"/>
+                                            <img @click.prevent="addCart({{$secondProductLine->id}})" src="{{asset('storage/product-cart.png')}}"/>
                                         </div>
                                         <div class="sub-catalog__adv-info">
                                             {!! str_limit(strip_tags($secondProductLine->description), $limit = 150, $end="...") !!}

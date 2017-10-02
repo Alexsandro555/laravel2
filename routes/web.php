@@ -9,9 +9,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-$app_name = config('app.name');
 
-Route::get('/', ['uses' => $app_name.'Controller@index', 'as' => 'wacker']);
+Route::get('/', ['uses' => 'WackerController@index', 'as' => 'wacker']);
+
 
 Route::get('/test', function() {
   phpinfo();
@@ -46,6 +46,30 @@ Route::get('/special-product/', ['uses' => 'Product\ProductController@special', 
 Route::get('product-images/{id}', ['uses' => 'Product\ProductController@images', 'as' => 'product-images']);
 // Список типов продуктов
 Route::get('/type-product/', ['uses' => 'Product\ProductController@typeProduct', 'as' => 'type-product']);
+
+
+// Корзина
+Route::get('/add-cart/{id}', ['uses' => 'Cart\CartController@add', 'as' => 'add-cart']);
+Route::get('/current-cart', ['uses' => 'Cart\CartController@current', 'as' => 'current-cart']);
+Route::get('/cart', ['uses' => 'Cart\CartController@index', 'as' => 'cart']);
+Route::post('/cart-delete',
+  [
+    'before' => 'csrf',
+    'uses' => 'Cart\CartController@delete',
+    'as' => 'cart-delete'
+  ]);
+Route::get('/cart-qty-up/{id}/{qty}', ['uses' => 'Cart\CartController@upQty', 'as' => 'cart-qty-up']);
+Route::get('/cart-qty-down/{id}/{qty}', ['uses' => 'Cart\CartController@downQty', 'as' => 'cart-qty-down']);
+
+
+//Оформление заказа
+Route::get('/order', ['uses' => 'Order\OrderController@index', 'as' => 'order']);
+Route::post('/order',
+  [
+    'before' => 'csrf',
+    'uses' => 'Order\OrderController@handler',
+    'as' => 'order'
+  ]);
 
 ///////////////////////////////////PAGE///////////////////////////////////////////////
 // Отображение конкретной страницы

@@ -43,7 +43,7 @@
                                     </div>
                                 </td>
                                 <td rowspan="4" class="table__sale">
-                                    <a href="#" class="table__btn">Купить</a>
+                                    <a @click.prevent="addCart({{$product->id}})" href="#" class="table__btn">Купить</a>
                                 </td>
                             </tr>
                             <?php $counter=1; ?>

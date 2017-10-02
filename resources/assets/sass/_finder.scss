@@ -39,7 +39,7 @@
 }
 
 .finder__cart {
-  margin-right: 50px;
+  margin-right: 38px;
   float: right;
   height: 74px;
   background: url('#{$path}/cart-wrap.png') center center repeat-x;
@@ -54,15 +54,17 @@
 
 .finder__cart-info {
   padding-top: 20px;
-  padding-right: 20px;
+  //padding-right: 20px;
   float: right;
   color: white;
   font-family: $font;
   font-size: 0.8em;
+  width: 210px;
 }
 
 .finder__cart-info span {
   color: #FBBD2C;
+  display: inline-block;
 }
 
 .finder__cart-info a {

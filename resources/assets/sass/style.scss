@@ -94,6 +94,7 @@ body,div {
 	font-family: $font-sans;
 	font-size: 16px;
 	margin:0px;
+	line-height: 1.2;
 }
 
 h2 {
@@ -125,6 +126,8 @@ h2 {
 @import 'product-line-1';
 @import 'main-products';
 @import 'news';
+@import 'cart';
+@import 'order';
 
 .breadrcumbs {
 	font-size: 0.8em;
@@ -161,3 +164,4 @@ h2 {
 .rolldown {
 	background: url('#{$path}/menu-toggle-down.png') no-repeat right 70px center, url('#{$path}/menu-left-last.png') no-repeat center bottom;
 }
+

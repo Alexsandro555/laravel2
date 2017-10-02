@@ -68,20 +68,6 @@
         <img src="{{asset('storage/wamgroup.png')}}">
         <a href="#">Посетить официальный сайт</a>
     </div>
-    <!--<div class="content__item">
-        <div class="content__header">
-            <h2>Наши акции и спецпредложения</h2>
-            <img src="{{asset('css/wacker/img/gears-dark.png')}}" />
-        </div>
-        <button class="content-button">Смотреть все</button>
-        <div class="main__content">
-            <div class="content__text">
-                <h2>Заголовок спецпредложения</h2>
-                <p>Краткое описание акции или предложения, <br>создан для примера</p>
-                <button class="back-call">ПОДРОБНЕЕ</button>
-            </div>
-        </div>
-     </div>-->
 @stop
 
 @section('content')
@@ -122,15 +108,7 @@
                                 {{$new->updated_at}}
                             </div>
                             <p>
-                                <?php
-                                if(strlen($new->content) > 50)
-                                {
-                                    echo strip_tags(substr($new->content,0,50))."...";
-                                }
-                                else {
-                                    echo strip_tags($new->content);
-                                }
-                                ?>
+                                {!! str_limit($new->content, $limit = 50, $end="...") !!}
                             </p>
                         </div>
                         <?php
@@ -147,7 +125,7 @@
                                 <hr class="about__product-hr" align="left">
                                 До 21 мая со скидкой <span class="about__product-detail-p">12%</span><br>
                                 <del>28 800</del> руб. <span class="about__product-price">23 800 руб.</span>
-                                <img src="{{asset('storage/product-cart.png')}}"/>
+                                <a href="#"><img src="{{asset('storage/product-cart.png')}}"/></a>
                             </div>
                         </div>
                     </div>
