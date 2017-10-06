@@ -9,6 +9,7 @@ use App\Http\Requests\Product\StoreTypeProductRequest;
 use App\Http\Requests\Product\UpdateTypeProductRequest;
 use App\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class TypeProductController extends Controller
 {
@@ -93,5 +94,15 @@ class TypeProductController extends Controller
   public function showList() {
     $typeProducts = TypeProduct::All();
     return view('product.typeProduct.list',compact('typeProducts'));
+  }
+
+
+  /**
+   * Получение типов продукции для привязки атрибутов
+   * @return Arr
+   */
+  public function getAll() {
+    $arrTypeProducts = TypeProduct::all()->sortBy("sort")->toArray();
+    return $arrTypeProducts;
   }
 }

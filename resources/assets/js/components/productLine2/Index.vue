@@ -75,9 +75,11 @@
                 this.$set(this, 'elements', resFilteredVal);
                 this.defaultId = 1;
                 this.$parent.selectType(id);
+                this.$parent.selectTypeProd = id;
             },
             selectline: function (id) {
                 this.$parent.selectProductLine(id);
+                this.$parent.selectLineProd = id;
             },
             normalizeForSelectBox(elements, name) {
                 let items = [];
@@ -102,6 +104,12 @@
                     });
                 });
                 items.sort(this.asc('sort'));
+                if(name === "type_product_id") {
+                    if(items>0) this.$parent.selectTypeProd = items[0].id;
+                }
+                if(name === "producer_type_product_id") {
+                    if(items>0) this.$parent.selectLineProd = items[0].id;
+                }
                 return items;
             },
             asc: function(field) {

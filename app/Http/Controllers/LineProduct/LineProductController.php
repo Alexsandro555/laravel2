@@ -92,4 +92,13 @@ class LineProductController extends Controller
     $producerTypeProducts = ProducerTypeProduct::All();
     return view('product.line.list',compact('producerTypeProducts'));
   }
+
+
+  /**
+   * Получение линейки продукции для заданного типа продукции
+   */
+  public function get($id) {
+    $arrProductLine = ProducerTypeProduct::where('type_product_id',$id)->get();
+    return $arrProductLine;
+  }
 }

@@ -46,7 +46,7 @@
 
                         <a href="{{route('create-attribute')}}" class="btn btn-info">Создать аттрибут</a>
                         <a href="{{route('set-attributes')}}" class="btn btn-info">Привязка атрибутов</a>
-                        <a href="{{route('set-prodLine-attributes')}}" class="btn btn-info">Привязка линейки атрибутов</a>
+                        <?php /*<a href="{{route('set-prodLine-attributes')}}" class="btn btn-info">Привязка линейки атрибутов</a>*/  ?>
                     </div>
                 </div>
             </div>

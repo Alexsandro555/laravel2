@@ -6,44 +6,40 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TypeProduct extends Model
 {
-    use SoftDeletes;
+  use SoftDeletes;
 
-    protected $fillable = [
-        'id',
-        'title',
-        'sort',
-        'tnved_id',
-        'description'
+  protected $fillable = [
+      'id',
+      'title',
+      'sort',
+      'tnved_id',
+      'description'
 
-    ];
+  ];
 
-    protected $dates = ['deleted_at'];
+  protected $dates = ['deleted_at'];
 
-    public function products() {
-        return $this->hasMany('App\Product');
-    }
+  public function products() {
+    return $this->hasMany('App\Product');
+  }
 
-    public function tnveds() {
-        return $this->belongsTo('App\Tnved');
-    }
+  public function tnveds() {
+    return $this->belongsTo('App\Tnved');
+  }
 
-    public function producer_type_products() {
-        return $this->hasMany('App\ProducerTypeProduct');
-    }
+  public function producer_type_products() {
+    return $this->hasMany('App\ProducerTypeProduct');
+  }
 
-    public function producers() {
-        return $this->belongsToMany('App\Producer')->withPivot('id','name_line','sort');
-    }
-
-    public function attributes_type_products() {
-        return $this->hasMany('App\AttributeTypeProduct');
-    }
-
-    public function attributes() {
-        return $this->belongsToMany('App\Attribute')->withPivot('type_product_id','attribute_id');
-    }
+  public function producers() {
+    return $this->belongsToMany('App\Producer')->withPivot('id','name_line','sort');
+  }
 
   public function files() {
     return $this->morphMany('App\File', 'fileable');
+  }
+
+  public function attributes() {
+    return $this->morphToMany('App\Attribute', 'attributable');
   }
 }

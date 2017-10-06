@@ -80,7 +80,9 @@ class ProductController extends Controller
       $typeProdArr['producer_type_product_id'] = $producerTypeProductResult;
       $resultArr['type_product_id'][] = $typeProdArr;
     }
-    return view('product.add', compact('category_all','resultArr'));
+    $typeProdId = TypeProduct::orderBy('sort','asc')->take(1)->pluck('id')->first();
+    $prodLineId = ProducerTypeProduct::orderBy('sort','asc')->take(1)->pluck('id')->first();
+    return view('product.add', compact('category_all','resultArr','typeProdId','prodLineId'));
   }
 
   /**
@@ -315,12 +317,69 @@ class ProductController extends Controller
 
   /**
    * Get Attributes
-   * @return json
+   * @return Arr
    */
-  public function getAttributes($id)
+  public function getAttributesTypeProduct($id)
   {
-    $attributes = AttributeTypeProduct::where('type_product_id',$id)->get();
-    return $attributes->toJson();
+    return TypeProduct::find($id)->attributes;
+  }
+
+  /**
+   * Get Attributes
+   */
+  public function getNAttributesTypeProduct($id)
+  {
+    $attributes = Attribute::all();
+    $arr1 = [];
+    foreach ($attributes as $attribute) {
+      $arr1[$attribute["id"]] = $attribute["title"];
+    }
+    $arr2 = [];
+    foreach (TypeProduct::find($id)->attributes as $attribute) {
+      $arr2[$attribute["id"]] = $attribute["title"];
+    }
+    $arrResult = array_diff($arr1,$arr2);
+    $arrT = [];
+    foreach ($arrResult as $key=>$arr) {
+      $temp['id'] = $key;
+      $temp['title'] = $arr;
+      $arrT[] = $temp;
+    }
+    return $arrT;
+  }
+
+  /**
+   * Get Attributes
+   * @return Arr
+   */
+  public function getAttributesLineProduct($id)
+  {
+    return ProducerTypeProduct::find($id)->attributes;
+  }
+
+
+  /**
+   * Get Attributes
+   */
+  public function getNAttributesLineProduct($id)
+  {
+    $attributes = Attribute::all();
+    $arr1 = [];
+    foreach ($attributes as $attribute) {
+      $arr1[$attribute["id"]] = $attribute["title"];
+    }
+    $arr2 = [];
+    foreach (ProducerTypeProduct::find($id)->attributes as $attribute) {
+      $arr2[$attribute["id"]] = $attribute["title"];
+    }
+    $arrResult = array_diff($arr1,$arr2);
+    $arrT = [];
+    foreach ($arrResult as $key=>$arr) {
+      $temp['id'] = $key;
+      $temp['title'] = $arr;
+      $arrT[] = $temp;
+    }
+    return $arrT;
   }
 
   /**
@@ -337,7 +396,7 @@ class ProductController extends Controller
    * Get Attributes
    * @return json
    */
-  public function attributes($id)
+  public function attributes($idTypeProduct,$idLineProduct)
   {
 
     /*$type_products = ProducerTypeProduct::find($id);
@@ -354,15 +413,17 @@ class ProductController extends Controller
         $arr[] = $temp;
       }
     }*/
-      $arr = [];
-      $producerTypeProduct = ProducerTypeProduct::find($id);
-      foreach ($producerTypeProduct->attributes as $attribute)
-      {
-          $temp['id'] = $attribute->id;
-          $temp['title'] = $attribute->title;
-          $arr[] = $temp;
-      }
-      return json_encode($arr);
+
+
+    if($idLineProduct) {
+      return ProducerTypeProduct::find($idLineProduct)->attributes;
+    }
+
+    if($idTypeProduct) {
+      return TypeProduct::find($idTypeProduct)->attributes;
+    }
+
+    return [];
   }
 
   public function attributesType($id)
@@ -448,16 +509,48 @@ class ProductController extends Controller
   /**
    * Bind Attributes
    */
-  public function bindAttributes($attributes) {
-    $attributes = json_decode($attributes, true);
-    foreach ($attributes as $item)
-    {
-      $AttrTypeVal = new AttributeTypeProduct;
-      $AttrTypeVal->attribute_id = $item["attribute_id"];
-      $AttrTypeVal->type_product_id = $item["type_product_id"];
-      $AttrTypeVal->save();
+  public function bindAttributes(Request $request) {
+    $typeProductId = $request->typeProductId;
+    $lineProductId = $request->lineProductId;
+
+    if($lineProductId) {
+      //DB::table('attributables')->where('attributable_id', $lineProductId)->where('attributable_type', 'App\ProducerTypeProduct')->delete();
+      foreach ($request->attr as $attribute) {
+        DB::table('attributables')->insert([
+          'attribute_id' => $attribute["id"],
+          'attributable_id' => $lineProductId,
+          'attributable_type' => 'App\ProducerTypeProduct'
+        ]);
+      }
+      return response()->json([], 200);
+    }
+
+    if($typeProductId) {
+      //DB::table('attributables')->where('attributable_id', $typeProductId)->where('attributable_type','App\TypeProduct')->delete();
+      foreach ($request->attr as $attribute)
+      {
+        DB::table('attributables')->insert([
+          'attribute_id' => $attribute["id"],
+          'attributable_id' => $typeProductId,
+          'attributable_type' => 'App\TypeProduct'
+        ]);
+      }
     }
     return response()->json([],200);
+  }
+
+  public function remAttrTypeProd(Request $request) {
+    $attr = $request->attr;
+    foreach ($attr as $item) {
+      DB::table('attributables')->where('attribute_id', $item)->where('attributable_type', 'App\TypeProduct')->delete();
+    }
+  }
+
+  public function remAttrLineProd(Request $request) {
+    $attr = $request->attr;
+    foreach ($attr as $item) {
+      DB::table('attributables')->where('attribute_id', $item)->where('attributable_type', 'App\ProducerTypeProduct')->delete();
+    }
   }
 
   /**
@@ -482,17 +575,14 @@ class ProductController extends Controller
     $attributes = $request->data;
     $id = $request->typeProdId;
     $attributes = json_decode($attributes, true);
-    $delRelations = AttributeTypeProduct::where('type_product_id',$id)->get();
-    foreach ($delRelations as $delRelation)
-    {
-      $delRelation->delete();
-    }
+    DB::table('attributables')->where('type_product_id',$id)->delete();
     foreach ($attributes as $item)
     {
-      $AttrTypeVal = new AttributeTypeProduct;
-      $AttrTypeVal->attribute_id = $item["attribute_id"];
-      $AttrTypeVal->type_product_id = $item["type_product_id"];
-      $AttrTypeVal->save();
+      DB::table('attributables')->insert([
+        'attribute_id' => $item["attribute_id"],
+        'attributable_id' => $item["type_product_id"],
+        'attributable_type' => 'App\TypeProduct'
+      ]);
     }
     return response()->json([],200);
   }

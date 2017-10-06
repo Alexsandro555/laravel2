@@ -68,6 +68,7 @@ Vue.component('leader-cart-widget', require('./components/leader-cart-widget/ind
 Vue.component('type-slider', require('./components/type-slider/index'));
 Vue.component('leader-cart', require('./components/leader-cart/index'));
 Vue.component('leader-tabs', require('./components/leader-tabs/index'));
+Vue.component('leader-set-attribute', require('./components/leader-set-attribute/index'));
 import AlexVueCarousel from './components/alex-carousel/index.js';
 Vue.use(AlexVueCarousel);
 Vue.prototype.$eventBus = new Vue();
@@ -91,7 +92,9 @@ new Vue({
         cart: {
             count:0,
             total:0
-        }
+        },
+        selectTypeProd: 0,
+        selectLineProd: 0
     },
     components: {
       MaskedInput
@@ -111,36 +114,28 @@ new Vue({
         selectProductLine: function(id) {
             let that = this;
             this.attrProd = [];
-            this.axios.get("/admin/product/attributes/"+id, {}).then(function (response)
-            {
-                if(response.data.length > 0)
-                {
-                    response.data.forEach(function(item)
-                    {
-                        let attribute = { attribute_id: item.id, title: item.title, value: '' };
+            this.axios.get("/admin/product/attributes/" + this.selectTypeProd +"/"+id, {}).then(function (response) {
+                if (response.data.length > 0) {
+                    response.data.forEach(function (item) {
+                        let attribute = {attribute_id: item.id, title: item.title, value: ''};
                         that.attrProd.push(attribute);
                     });
                 }
-            }).catch(function (error)
-            {
+            }).catch(function (error) {
                 console.log(error);
             });
         },
         selectType: function(id) {
             let that = this;
             this.attrProd = [];
-            this.axios.get("/admin/product/attributesType/"+id, {}).then(function (response)
-            {
-                if(response.data.length > 0)
-                {
-                    response.data.forEach(function(item)
-                    {
-                        let attribute = { attribute_id: item.id, title: item.title, value: '' };
+            this.axios.get("/admin/product/attributes/" + id +"/"+0, {}).then(function (response) {
+                if (response.data.length > 0) {
+                    response.data.forEach(function (item) {
+                        let attribute = {attribute_id: item.id, title: item.title, value: ''};
                         that.attrProd.push(attribute);
                     });
                 }
-            }).catch(function (error)
-            {
+            }).catch(function (error) {
                 console.log(error);
             });
         },

@@ -220,27 +220,44 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
       'uses' => 'Product\ProductController@findProduct',
       'as'=>'find-product'
     ]);
-    /////////////////////////////////////////////////////АТРИБУТЫ//////////////////////////////////////////////////////////////
-    // установка атрибутов для типа продукта
-    Route::get('/product/setAttributes', ['uses' => 'Product\ProductController@setAttributes', 'as' => 'set-attributes']);
+  /////////////////////////////////////////////////////АТРИБУТЫ//////////////////////////////////////////////////////////////
+  // Получение типов продукции
+  Route::get('/product/getTypeProducts', ['uses' => 'TypeProduct\TypeProductController@getAll', 'as' => 'get-all-type-product']);
+  // Получение линеек продукции для соотвествующего типа
+  Route::get('/product/getLineProduct/{id}', ['uses' => 'LineProduct\LineProductController@get', 'as' => 'get-line-product']);
+  // Получение атрибутов заданного типа продукции (в дальнейшем перенести в AttributeController
+  Route::get('/product/getAttributesTypeProduct/{id}', ['uses' => 'Product\ProductController@getAttributesTypeProduct', 'as' => 'get-attributes-type-product']);
+  Route::get('/product/getNAttributesTypeProduct/{id}', ['uses' => 'Product\ProductController@getNAttributesTypeProduct', 'as' => 'get-nattributes-type-product']);
+  // Получение атрибутов заданной линейки продукции
+  Route::get('/product/getAttributesLineProduct/{id}', ['uses' => 'Product\ProductController@getAttributesLineProduct', 'as' => 'get-attributes-line-product']);
+  Route::get('/product/getNAttributesLineProduct/{id}', ['uses' => 'Product\ProductController@getNAttributesLineProduct', 'as' => 'get-nattributes-line-product']);
+  Route::post('/product/remAttrTypeProd', ['before' => 'csrf', 'uses' => 'Product\ProductController@remAttrTypeProd', 'as' => 'rem-attr-type-prod']);
+  Route::post('/product/remAttrLineProd', ['before' => 'csrf', 'uses' => 'Product\ProductController@remAttrLineProd', 'as' => 'rem-attr-line-prod']);
+
+  // установка атрибутов для типа продукта
+  Route::get('/product/setAttributes', ['uses' => 'Product\ProductController@setAttributes', 'as' => 'set-attributes']);
   Route::get('/product/setProdLineAttributes', ['uses' => 'Product\ProductController@setProdLineAttributes', 'as' => 'set-prodLine-attributes']);
-    Route::post('/product/bindAttributes/{attributes}', ['uses' => 'Product\ProductController@bindAttributes', 'as' => 'bind-attributes']);
-    Route::post('/product/bindAttributesUpdate', ['before' => 'csrf','uses' => 'Product\ProductController@bindAttributesUpdate', 'as' => 'bind-attributes']);
+  Route::post('/product/bindAttributes',
+    [
+      'before' => 'csrf',
+      'uses' => 'Product\ProductController@bindAttributes',
+      'as' => 'bind-attributes'
+    ]);
+  Route::post('/product/bindAttributesUpdate', ['before' => 'csrf','uses' => 'Product\ProductController@bindAttributesUpdate', 'as' => 'bind-attributes']);
   Route::post('/product/bindLineProdAttributes/{attributes}', ['uses' => 'Product\ProductController@bindLineProdAttributes', 'as' => 'bind-lineprod-attributes']);
   Route::post('/product/bindLineProdAttributesUpdate', ['before' => 'csrf','uses' => 'Product\ProductController@bindLineProdAttributesUpdate', 'as' => 'bind--lineprod-attributes']);
-    // Обработка добавления нового атрибута
-    Route::post('/porduct/addAttribute',
-        [
-            'before' => 'csrf',
-            'uses' => 'Product\ProductController@addAttributeHandler',
-            'as'=>'add-attribute'
-        ]);
-    // Получение всех атрибутов
-    Route::get('/product/getAllAttributes', ['uses' => 'Product\ProductController@getAllAttributes', 'as' => 'get-all-attributes']);
-    // Получение атрибутов заданного типа продукции
-    Route::get('/product/getAttributes/{id}', ['uses' => 'Product\ProductController@getAttributes', 'as' => 'get-attributes']);
+  // Обработка добавления нового атрибута
+  Route::post('/porduct/addAttribute',
+      [
+          'before' => 'csrf',
+          'uses' => 'Product\ProductController@addAttributeHandler',
+          'as'=>'add-attribute'
+      ]);
+  // Получение всех атрибутов
+  Route::get('/product/getAllAttributes', ['uses' => 'Product\ProductController@getAllAttributes', 'as' => 'get-all-attributes']);
+
   Route::get('/product/getProdLineAttributes/{id}', ['uses' => 'Product\ProductController@getProdLineAttributes', 'as' => 'get-prodline-attributes']);
-    Route::get('/product/attributes/{id}', ['uses' => 'Product\ProductController@attributes', 'as' => 'attributes']);
+    Route::get('/product/attributes/{idTypeProduct}/{idLineProduct}', ['uses' => 'Product\ProductController@attributes', 'as' => 'attributes']);
   Route::get('/product/attributesType/{id}', ['uses' => 'Product\ProductController@attributesType', 'as' => 'attributes-type']);
     Route::get('/product/existAttributes/{id}', ['uses' => 'Product\ProductController@existAttributes', 'as' => 'exist-attributes']);
     Route::post('/product/saveAttributes', ['before' => 'csrf', 'uses' => 'Product\ProductController@saveAttributes', 'as' => 'save-attributes']);

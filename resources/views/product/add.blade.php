@@ -34,7 +34,7 @@
             <a class="nav-link active" data-toggle="tab" href="#main" role="tab">Основные</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#attributes" role="tab">Атрибуты</a>
+            <a class="nav-link tab-attr" data-toggle="tab" href="#attributes" role="tab">Атрибуты</a>
         </li>
     </ul>
 
@@ -135,13 +135,9 @@
         </div>
         <div class="tab-pane" id="attributes" role="tabpanel">
             @if(isset($product))
-                @if(isset($product->producer_type_product_id))
-                    <attributes-product v-bind:items="attrProd" v-bind:product-id="{{$product->id}}" v-bind:producer-type-product-id="{{$product->producer_type_product_id}}"></attributes-product>
-                @else
-                    <attributes-product v-bind:items="attrProd" v-bind:product-id="{{$product->id}}" v-bind:type-product-id="{{$product->type_product_id}}"></attributes-product>
-                @endif
+                    <attributes-product v-bind:items="attrProd" v-bind:product-id="{{$product->id}}" v-bind:type-product-id="{{$product->type_product_id}}" v-bind:producer-type-product-id="{{$product->producer_type_product_id}}"></attributes-product>
             @else
-                <attributes-product v-bind:items="attrProd"></attributes-product>
+                <attributes-product v-bind:items="attrProd" v-bind:type-product-id={{$typeProdId}} v-bind:producer-type-product-id={{$prodLineId}}></attributes-product>
             @endif
         </div>
     </div>
