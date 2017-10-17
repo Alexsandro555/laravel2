@@ -94,22 +94,19 @@ new Vue({
             total:0
         },
         selectTypeProd: 0,
-        selectLineProd: 0
+        selectLineProd: 0,
+        Qty: 0,
     },
     components: {
       MaskedInput
     },
     methods: {
         addCart: function (id) {
-            let that = this;
-            this.axios.get('/add-cart/'+id, {}).then(function (response) {
-                let cartVal = response.data;
-                that.cart.count =  cartVal.count;
-                that.cart.total = cartVal.total;
-            }).catch(function (error)
-            {
-                console.log(error);
-            });
+            this.$eventBus.$emit('add-cart', id);
+        },
+        updateCart: function(id) {
+            this.$eventBus.$emit('update-qty', id, this.Qty);
+            this.Qty = 0;
         },
         selectProductLine: function(id) {
             let that = this;

@@ -37,9 +37,9 @@
                                 <td rowspan="4"><span>23800</span> руб.</td>
                                 <td rowspan="4" width="60px">
                                     <div class="detail-counter">
-                                        <div class="detail-counter__left"><img src="{{asset('../storage/detail-cart-arr-down.png')}}"/></div>
-                                        <div class="detail-counter__center">3</div>
-                                        <div class="detail-counter__right"><img src="{{asset('../storage/detail-cart-arr-up.png')}}"/></div>
+                                        <div class="detail-counter__left" @click.prevent="Qty>0?Qty--:Qty=0"><img src="{{asset('../storage/detail-cart-arr-down.png')}}"/></div>
+                                        <div class="detail-counter__center">@{{ Qty }}</div>
+                                        <div class="detail-counter__right" @click.prevent="Qty++"><img src="{{asset('../storage/detail-cart-arr-up.png')}}"/></div>
                                     </div>
                                 </td>
                                 <td rowspan="4" class="table__sale">

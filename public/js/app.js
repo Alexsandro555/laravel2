@@ -12014,14 +12014,7 @@ new Vue({
     },
     methods: {
         addCart: function addCart(id) {
-            var that = this;
-            this.axios.get('/add-cart/' + id, {}).then(function (response) {
-                var cartVal = response.data;
-                that.cart.count = cartVal.count;
-                that.cart.total = cartVal.total;
-            }).catch(function (error) {
-                console.log(error);
-            });
+            this.$eventBus.$emit('add-cart', id);
         },
         selectProductLine: function selectProductLine(id) {
             var that = this;
@@ -57752,6 +57745,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         this.$eventBus.$on('change-count', this.changeCount);
         this.$eventBus.$on('change-total', this.changeTotal);
+        this.$eventBus.$on('add-cart', this.addCart);
     },
     mounted: function mounted() {
         this.cart = this.cartItem;
@@ -57771,6 +57765,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         changeTotal: function changeTotal(total) {
             this.cart.total = total;
+        },
+        addCart: function addCart(id) {
+            var that = this;
+            this.axios.get('/add-cart/' + id, {}).then(function (response) {
+                var cartVal = response.data;
+                that.cart.count = cartVal.count;
+                that.cart.total = cartVal.total;
+            }).catch(function (error) {
+                console.log(error);
+            });
         }
     }
 });
@@ -57803,7 +57807,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "finder__cart-image" }, [
-      _c("img", { attrs: { src: "storage/cart.png" } })
+      _c("img", { attrs: { src: "/storage/cart.png" } })
     ])
   }
 ]

@@ -60,7 +60,7 @@ Route::post('/cart-delete',
   ]);
 Route::get('/cart-qty-up/{id}/{qty}', ['uses' => 'Cart\CartController@upQty', 'as' => 'cart-qty-up']);
 Route::get('/cart-qty-down/{id}/{qty}', ['uses' => 'Cart\CartController@downQty', 'as' => 'cart-qty-down']);
-
+Route::get('/update-qty/{id}/{qty}', ['uses' => 'Cart\CartController@updateQty', 'as' => 'update-qty']);
 
 //Оформление заказа
 Route::get('/order', ['uses' => 'Order\OrderController@index', 'as' => 'order']);

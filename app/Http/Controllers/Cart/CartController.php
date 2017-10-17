@@ -86,4 +86,18 @@ class CartController extends Controller
     Cart::update($id,$qty);
     return [];
   }
+
+  public function updateQty($id,$qty) {
+    $product = Product::with('files')->find($id);
+    $filename = "";
+    if(count($product->files)>0) {
+      foreach($product->files as $file)
+      {
+        $filename = $file->filename;
+        break;
+      }
+    }
+    Cart::add($product->id, $product->title, $qty, $product->price,['article'=>$product->article, 'slug'=>$product->url_key, 'filename'=>$filename!=""?$filename:"no-image.png"]);
+    return [];
+  }
 }
