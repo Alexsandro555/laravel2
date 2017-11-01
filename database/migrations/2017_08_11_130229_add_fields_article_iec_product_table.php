@@ -26,6 +26,9 @@ class AddFieldsArticleIecProductTable extends Migration
      */
     public function down()
     {
-        //
+      Schema::table('products', function (Blueprint $table) {
+        $table->dropColumn('article');
+        $table->dropColumn('IEC');
+      });
     }
 }
