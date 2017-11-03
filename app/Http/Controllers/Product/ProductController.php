@@ -868,7 +868,9 @@ class ProductController extends Controller
   }
 
   public function images($id) {
-    $imageProducts = File::where('fileable_id',$id)->where('fileable_type','App\Product')->get();
+    $imageProducts = File::with('typeFile')->whereHas('typeFile', function($query) {
+      $query->where('name','detailimage');
+    })->where('fileable_id',$id)->where('fileable_type','App\Product')->get();
     return $imageProducts->toArray();
   }
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFieldSizeFilesTable extends Migration
+class AddFieldDescriptionTypeProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddFieldSizeFilesTable extends Migration
      */
     public function up()
     {
-        Schema::table('files', function (Blueprint $table) {
-            $table->integer('size');
-        });
+      Schema::table('type_products', function (Blueprint $table) {
+        $table->text('description')->nullable();
+      });
     }
 
     /**
@@ -25,8 +25,8 @@ class AddFieldSizeFilesTable extends Migration
      */
     public function down()
     {
-        Schema::table('files', function (Blueprint $table) {
-            $table->dropColumn('size');
-        });
+      Schema::table('type_products', function (Blueprint $table) {
+        $table->dropColumn('description');
+      });
     }
 }

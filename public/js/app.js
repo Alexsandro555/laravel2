@@ -12007,7 +12007,8 @@ new Vue({
             total: 0
         },
         selectTypeProd: 0,
-        selectLineProd: 0
+        selectLineProd: 0,
+        Qty: 0
     },
     components: {
         MaskedInput: __WEBPACK_IMPORTED_MODULE_7_vue_masked_input__["a" /* default */]
@@ -12015,6 +12016,10 @@ new Vue({
     methods: {
         addCart: function addCart(id) {
             this.$eventBus.$emit('add-cart', id);
+        },
+        updateCart: function updateCart(id) {
+            this.$eventBus.$emit('update-qty', id, this.Qty);
+            this.Qty = 0;
         },
         selectProductLine: function selectProductLine(id) {
             var that = this;
@@ -52872,6 +52877,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -52881,7 +52888,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         'url': String,
         'elementId': {
             type: Number,
-            default: 0
+            required: true
+        },
+        'typeFiles': {
+            type: Array,
+            required: true
         }
     },
     data: function data() {
@@ -52896,6 +52907,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         Dropzone: __WEBPACK_IMPORTED_MODULE_0_vue2_dropzone___default.a
     },
     mounted: function mounted() {
+        //console.log(this.typeFiles);
         //var $element = document.getElementById("files-id");
         //$element.value = "";
     },
@@ -52904,6 +52916,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //console.log('work');
             var $element = document.getElementById("files-id");
             var ids = JSON.parse($element.value);
+            console.log('Data:' + data);
+            console.log('File:' + file);
             ids.push(data.id);
             $element.value = JSON.stringify(ids);
         },
@@ -52913,6 +52927,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         'fileRemoved': function fileRemoved(file) {
             //console.log('Deleting: '+file.id);
             var id = file.id;
+            console.log(id);
             this.axios.get('/deleteFile/' + id, {}).then(function (response) {}).catch(function (error) {
                 console.log(error);
             });
@@ -52923,13 +52938,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var dropzone = this.$refs.myVueDropzone;
             this.axios.get('/getFiles/' + that.elementId, {}).then(function (response) {
                 var data = response.data;
+                //console.log(response.data);
                 for (var key in data) {
                     var image = data[key];
-                    var id = image.id;
-                    var filename = image.filename;
-                    var size = image.size;
-                    var mockFile = { id: id, name: filename, size: size };
-                    dropzone.manuallyAddFile(mockFile, "/storage/" + filename, null, null, { dontSubstractMaxFiles: false, addToFiles: true });
+                    if (image.type_file) {
+                        var id = image.id;
+                        var filename = image.config.filename;
+                        //let size = image.size;
+                        //let mockFile = {id: id, name: filename, size: size};
+                        var mockFile = { id: id, name: filename };
+                        dropzone.manuallyAddFile(mockFile, "/storage/" + filename, null, null, { dontSubstractMaxFiles: false, addToFiles: true });
+                    }
                 }
             }).catch(function (error) {
                 console.log(error);
@@ -52981,8 +53000,21 @@ var render = function() {
           _c("input", {
             attrs: { type: "hidden", name: "_token" },
             domProps: { value: _vm.csrfToken }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            attrs: { type: "hidden", name: "elementId" },
+            domProps: { value: _vm.elementId }
+          }),
+          _vm._v(" "),
+          _vm._l(_vm.typeFiles, function(typeFile) {
+            return _c("input", {
+              attrs: { type: "hidden", name: "typefile[]" },
+              domProps: { value: typeFile }
+            })
           })
-        ]
+        ],
+        2
       )
     ],
     1
@@ -56295,10 +56327,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (response.data.length > 0) {
                 that.elements = response.data;
                 that.elements.forEach(function (element) {
-                    var obj = { 'id': element.id, 'file': element.filename };
+                    var obj = { 'id': element.id, 'file': element.config.filename };
                     that.items.push(obj);
                 });
-                that.curImage = '/storage/' + that.elements[0].filename;
+                that.curImage = '/storage/' + that.elements[0].config.filename;
             }
         }).catch(function (error) {
             console.log(error);
@@ -56310,7 +56342,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var that = this;
             this.elements.forEach(function (element) {
                 if (element.id === id) {
-                    that.curImage = '/storage/' + element.filename;
+                    that.curImage = '/storage/' + element.config.filename;
                 }
             });
         }
@@ -57746,6 +57778,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.$eventBus.$on('change-count', this.changeCount);
         this.$eventBus.$on('change-total', this.changeTotal);
         this.$eventBus.$on('add-cart', this.addCart);
+        this.$eventBus.$on('update-qty', this.updateQty);
     },
     mounted: function mounted() {
         this.cart = this.cartItem;
@@ -57772,6 +57805,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var cartVal = response.data;
                 that.cart.count = cartVal.count;
                 that.cart.total = cartVal.total;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        updateQty: function updateQty(id, qty) {
+            var that = this;
+            this.axios.get('/update-qty/' + id + '/' + qty, {}).then(function (response) {
+                that.cart.count = that.cart.count + qty;
             }).catch(function (error) {
                 console.log(error);
             });

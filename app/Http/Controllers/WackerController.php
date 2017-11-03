@@ -27,23 +27,23 @@ class WackerController extends Controller
     return view('wacker.details');
   }
 
-    public function catalog($id) {
-      $typeProduct = TypeProduct::find($id);
-      $producerTypeProducts = ProducerTypeProduct::with('files')->where('type_product_id',$id)->get();
-      $productLine = [];
-      foreach ($producerTypeProducts as $producerTypeProduct)
+  public function catalog($id) {
+    $typeProduct = TypeProduct::find($id);
+    $producerTypeProducts = ProducerTypeProduct::with('files')->where('type_product_id',$id)->get();
+    $productLine = [];
+    foreach ($producerTypeProducts as $producerTypeProduct)
+    {
+      $tempArr['products'] = Product::with('files.typeFile')->where('producer_type_product_id',$producerTypeProduct->id)->get();
+      if($tempArr['products']->first())
       {
-        $tempArr['products'] = Product::with('files')->where('producer_type_product_id',$producerTypeProduct->id)->get();
-        if($tempArr['products']->first())
-        {
-          $tempArr['id'] = $producerTypeProduct->id;
-          $tempArr['title']= $producerTypeProduct->name_line;
-          $productLine[] = $tempArr;
-        }
+        $tempArr['id'] = $producerTypeProduct->id;
+        $tempArr['title']= $producerTypeProduct->name_line;
+        $productLine[] = $tempArr;
       }
-      $news = News::take(2)->get();
-      return view('wacker.catalog', compact('producerTypeProducts','productLine', 'typeProduct', 'news'));
     }
+    $news = News::take(2)->get();
+    return view('wacker.catalog', compact('producerTypeProducts','productLine', 'typeProduct', 'news'));
+  }
 
     public function detail($slug) {
       $news = News::take(2)->get();

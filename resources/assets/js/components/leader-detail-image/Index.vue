@@ -36,10 +36,10 @@
                 if(response.data.length > 0) {
                     that.elements = response.data;
                     that.elements.forEach(function (element) {
-                        let obj = {'id': element.id, 'file': element.filename};
+                        let obj = {'id': element.id, 'file': element.config.filename};
                         that.items.push(obj);
                     });
-                    that.curImage = '/storage/' + that.elements[0].filename;
+                    that.curImage = '/storage/' + that.elements[0].config.filename;
                 }
             }).catch(function (error)
             {
@@ -51,7 +51,7 @@
                 let that = this;
                 this.elements.forEach(function(element) {
                     if(element.id === id) {
-                        that.curImage = '/storage/'+element.filename;
+                        that.curImage = '/storage/'+element.config.filename;
                     }
                 });
             }

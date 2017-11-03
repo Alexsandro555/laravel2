@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('view.style')
-    <title>Wam</title>
+    <title>@yield('title')</title>
 </head>
 <body>
 <div id="app">

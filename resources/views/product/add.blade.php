@@ -129,7 +129,7 @@
             {!! Form::token() !!}
             {!! Form::close() !!}
             <div style="margin-top: 50px;">
-                <uploader url="/upload" :element-id={{(isset($product))?$product->id:0}}></uploader>
+                <uploader url="/upload" :element-id={{(isset($product))?$product->id:0}} :type-files="['photo','detailimage','minidetailimage','listimage','indeximage','cartimage','dropzoneimage']"></uploader>
             </div>
         </div>
         <div class="tab-pane" id="attributes" role="tabpanel">

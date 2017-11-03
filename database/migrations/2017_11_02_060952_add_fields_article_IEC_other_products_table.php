@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFieldsArticleIecProductTable extends Migration
+class AddFieldsArticleIECOtherProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class AddFieldsArticleIecProductTable extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->string('article')->nullable();
-            $table->string('IEC')->nullable();
-        });
+      Schema::table('products', function (Blueprint $table) {
+        $table->integer('producer_id')->unsigned()->nullable();
+        $table->string('article')->nullable();
+        $table->string('IEC')->nullable();
+        $table->foreign('producer_id')->references('id')->on('producers')->onDelete('cascade');
+      });
     }
 
     /**
@@ -27,6 +29,8 @@ class AddFieldsArticleIecProductTable extends Migration
     public function down()
     {
       Schema::table('products', function (Blueprint $table) {
+        $table->dropForeign('products_producer_id_foreign');
+        $table->dropColumn('producer_id');
         $table->dropColumn('article');
         $table->dropColumn('IEC');
       });

@@ -1,5 +1,7 @@
 @extends('layouts.wacker')
 
+@section('title', "Wam")
+
 @section('content-item')
     <div class="banner">
         <div class="banner__text">

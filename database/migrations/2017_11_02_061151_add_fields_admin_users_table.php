@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFieldTypeProductsTable extends Migration
+class AddFieldsAdminUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddFieldTypeProductsTable extends Migration
      */
     public function up()
     {
-      Schema::table('type_products', function (Blueprint $table) {
-        $table->text('description')->nullable();
+      Schema::table('users', function (Blueprint $table) {
+        $table->integer('admin')->unsigned()->nullable();
       });
     }
 
@@ -25,9 +25,8 @@ class AddFieldTypeProductsTable extends Migration
      */
     public function down()
     {
-      Schema::table('type_products', function (Blueprint $table) {
-        $table->dropColumn('description');
+      Schema::table('users', function (Blueprint $table) {
+        $table->dropColumn('admin');
       });
-
     }
 }

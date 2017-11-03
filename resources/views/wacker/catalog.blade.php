@@ -1,5 +1,7 @@
 @extends('layouts.wacker')
 
+@section('title', $typeProduct->title)
+
 @section('content-item')
     <div class="content__catalog">
         <div class="content__catalog-head">
@@ -30,8 +32,10 @@
                             <div class="product-image">
                                 @if(count($firstProductLine->files)>0)
                                     @foreach($firstProductLine->files as $file)
-                                        <img src="{{asset('../storage/'.$file->filename)}}" width="170px"/>
-                                        <?php break; ?>
+                                        @if($file->typeFile->name == "listimage")
+                                            <img src="{{asset('../storage/'.$file->config["filename"])}}"/>
+                                            <?php break; ?>
+                                        @endif
                                     @endforeach
                                 @else
                                     <img src="{{asset('../storage/no-image.png')}}" width="170px"/>

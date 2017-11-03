@@ -21,7 +21,7 @@ class CartController extends Controller
     if(count($product->files)>0) {
       foreach($product->files as $file)
       {
-        $filename = $file->filename;
+        $filename = $file->config["filename"];
         break;
       }
     }
@@ -93,7 +93,7 @@ class CartController extends Controller
     if(count($product->files)>0) {
       foreach($product->files as $file)
       {
-        $filename = $file->filename;
+        $filename = $file->config["filename"];
         break;
       }
     }
